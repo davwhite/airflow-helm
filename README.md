@@ -17,11 +17,12 @@ tar xzf airflow-x.x.x.tgz
 ```
 
 Copy the "values.yaml" files to their respective directories replacing the files there
-
+```
 ├── charts
 │   └── postgresql
 │       └── values.yaml
 └── values.yaml
+```
 
 Run the helm command from the airflow directory
 ```
