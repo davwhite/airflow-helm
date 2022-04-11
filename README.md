@@ -2,6 +2,11 @@
 Helm chart for Airflow on OpenShift
 
 ## Installation
+Run the create yaml for the namespace. *IMPORTANT: This sets up the UIDs for the proper security context definitions
+```
+oc create -f create-namespace.yaml
+```
+
 Add the Airflow helm repo
 ```
 helm repo add apache-airflow https://airflow.apache.org
