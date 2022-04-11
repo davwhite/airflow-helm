@@ -29,14 +29,14 @@ nameOverride: ""
 kubeVersionOverride: ""
 
 # User and group of airflow user
-uid: 1000770000
-gid: 1000770000
+uid: 1000710000
+gid: 1000710000
 
 # Default security context for airflow
-securityContext: {}
-#  runAsUser: 50000
-#  fsGroup: 0
-#  runAsGroup: 0
+securityContext:
+ runAsUser: 1000710000
+#  # fsGroup: 1000710000
+ runAsGroup: 0
 
 # Airflow home directory
 # Used for mount paths
@@ -429,8 +429,8 @@ workers:
 
   # When not set, the values defined in the global securityContext will be used
   securityContext: 
-   runAsUser: 1000770000
-   fsGroup: 1000770000
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
    runAsGroup: 0
 
   # Create ServiceAccount
@@ -597,10 +597,10 @@ scheduler:
   strategy: ~
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext: 
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Create ServiceAccount
   serviceAccount:
@@ -709,10 +709,10 @@ createUserJob:
   jobAnnotations: {}
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext:
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Create ServiceAccount
   serviceAccount:
@@ -766,10 +766,10 @@ migrateDatabaseJob:
   jobAnnotations: {}
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext:
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Create ServiceAccount
   serviceAccount:
@@ -842,10 +842,10 @@ webserver:
   strategy: ~
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext:
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Additional network policies as needed (Deprecated - renamed to `webserver.networkPolicy.ingress.from`)
   extraNetworkPolicies: []
@@ -993,10 +993,10 @@ triggerer:
     annotations: {}
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext: 
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   resources: {}
   #  limits:
@@ -1076,10 +1076,10 @@ flower:
   #     memory: 128Mi
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext: 
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Create ServiceAccount
   serviceAccount:
@@ -1147,10 +1147,10 @@ statsd:
     annotations: {}
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 65534
-  #  fsGroup: 0
-  #  runAsGroup: 0
+  securityContext: 
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
   # Additional network policies as needed
   extraNetworkPolicies: []
@@ -1175,7 +1175,7 @@ statsd:
   # Additional mappings for statsd exporter.
   extraMappings: []
 
-  uid: 1000770000
+  uid: 1000710000
 
 # PgBouncer settings
 pgbouncer:
@@ -1280,7 +1280,7 @@ pgbouncer:
 
   priorityClassName: ~
 
-  uid: 1000770000
+  uid: 1000710000
 
   metricsExporterSidecar:
     resources: {}
@@ -1424,9 +1424,10 @@ cleanup:
     annotations: {}
 
   # When not set, the values defined in the global securityContext will be used
-  securityContext: {}
-  #  runAsUser: 50000
-  #  runAsGroup: 0
+  securityContext: 
+   runAsUser: 1000710000
+   # fsGroup: 1000710000
+   runAsGroup: 0
 
 # Configuration for postgresql subchart
 # Not recommended for production
@@ -1598,9 +1599,10 @@ dags:
     uid: 65533
 
     # When not set, the values defined in the global securityContext will be used
-    securityContext: {}
-    #  runAsUser: 65533
-    #  runAsGroup: 0
+    securityContext:
+     runAsUser: 1000710000
+     # fsGroup: 1000710000
+     runAsGroup: 0
 
     extraVolumeMounts: []
     env: []

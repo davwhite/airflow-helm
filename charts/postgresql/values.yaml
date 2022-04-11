@@ -118,7 +118,7 @@ volumePermissions:
   ## pod securityContext.enabled=false and shmVolume.chmod.enabled=false
   ##
   securityContext:
-    runAsUser: 1000770000
+    runAsUser: 1000710000
 ## @param schedulerName Use an alternate scheduler, e.g. "stork".
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 ##
@@ -130,7 +130,7 @@ schedulerName:
 ##
 securityContext:
   enabled: true
-  fsGroup: 1000770000
+  fsGroup: 1000710000
 ## Container Security Context
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ## @param containerSecurityContext.enabled Enable container security context
@@ -138,7 +138,7 @@ securityContext:
 ##
 containerSecurityContext:
   enabled: true
-  runAsUser: 1000770000
+  runAsUser: 1000710000
 ## Pod Service Account
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 ##
@@ -902,7 +902,7 @@ metrics:
   ##
   securityContext:
     enabled: false
-    runAsUser: 1000770000
+    runAsUser: 1000710000
   ## Configure extra options for liveness probe
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
   ## @param metrics.livenessProbe.enabled Enable livenessProbe
