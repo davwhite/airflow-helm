@@ -17,20 +17,24 @@ Helm chart for Airflow on OpenShift
 
 ## Prerequsites for SNO
 - Install the local storage operator
-- Create 3 partitions on another disk device, 8GB, 100GB, and 1GB
+- Use LVM to create 3 partitions on another disk device, 8GB, 100GB, and 1GB
+  - pvcreate pv01 /dev/sda
+  - vgcreate vg01 /dev/sda
+  - lvcreate -L 8G -n postgres-data vg01
+  - lvcreate -L 100G -n workers-data vg01
+  - lvcreate -L 1G -n redis-data vg01
 ```
-sda           8:0    0 953.9G  0 disk 
-├─sda1        8:1    0     8G  0 part
-├─sda2        8:2    0   100G  0 part
-└─sda3        8:3    0     1G  0 part
+  LV            VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  postgres-data vg01 -wi-a-----   8.00g                                                    
+  redis-data    vg01 -wi-a-----   1.00g                                                    
+  workers-data  vg01 -wi-a----- 100.00g 
 ```
 - Format the partitions as xfs
 ```
-mkfs -t xfs /dev/sda1
-mkfs -t xfs /dev/sda2
-mkfs -t xfs /dev/sda3
+mkfs -t xfs /dev/vg01/postgres-data
+mkfs -t xfs /dev/vg01/workers-data
+mkfs -t xfs /dev/vg01/redis-data
 ```
-
 
 ## Installation
 1. Run the create yaml for the namespace. *IMPORTANT: This sets up the UIDs for the proper security context definitions
