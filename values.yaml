@@ -52,8 +52,8 @@ defaultAirflowTag: "2.2.4"
 airflowVersion: "2.2.4"
 
 ## For local storage use this storage class
-workerStorageClassName: "local-sc-a2"
-redisStorageClassName: "local-sc-a3"
+workerStorageClassName: "local-sc-workers"
+redisStorageClassName: "local-sc-redis"
 
 # Images
 images:

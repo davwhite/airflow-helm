@@ -2,7 +2,7 @@
 apiVersion: "local.storage.openshift.io/v1"
 kind: "LocalVolume"
 metadata:
-  name: "local-disks-sda1"
+  name: "local-disks-postgres"
   namespace: "openshift-local-storage"
 spec:
   nodeSelector:
@@ -13,16 +13,16 @@ spec:
           values:
           - ocpsno.davenet.local
   storageClassDevices:
-    - storageClassName: "local-sc-a1"
+    - storageClassName: "local-sc-postgres"
       volumeMode: Filesystem
       fsType: xfs
       devicePaths:
-        - /dev/sda1
+        - /dev/vg01/postgres-data
 ---
 apiVersion: "local.storage.openshift.io/v1"
 kind: "LocalVolume"
 metadata:
-  name: "local-disks-sda2"
+  name: "local-disks-workers"
   namespace: "openshift-local-storage"
 spec:
   nodeSelector:
@@ -33,16 +33,16 @@ spec:
           values:
           - ocpsno.davenet.local
   storageClassDevices:
-    - storageClassName: "local-sc-a2"
+    - storageClassName: "local-sc-workers"
       volumeMode: Filesystem
       fsType: xfs
       devicePaths:
-        - /dev/sda2
+        - /dev/vg01/workers-data
 ---
 apiVersion: "local.storage.openshift.io/v1"
 kind: "LocalVolume"
 metadata:
-  name: "local-disks-sda3"
+  name: "local-disks-redis"
   namespace: "openshift-local-storage"
 spec:
   nodeSelector:
@@ -53,8 +53,8 @@ spec:
           values:
           - ocpsno.davenet.local
   storageClassDevices:
-    - storageClassName: "local-sc-a3"
+    - storageClassName: "local-sc-redis"
       volumeMode: Filesystem
       fsType: xfs
       devicePaths:
-        - /dev/sda3
+        - /dev/vg01/redis-data

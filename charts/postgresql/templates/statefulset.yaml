@@ -601,7 +601,7 @@ spec:
         {{- range .Values.persistence.accessModes }}
           - {{ . | quote }}
         {{- end }}
-        storageClassName: local-sc-a1
+        storageClassName: local-sc-postgres
         resources:
           requests:
             storage: {{ .Values.persistence.size | quote }}

@@ -1,4 +1,8 @@
 # Release Notes:
+## 0.2
+- Branched off into SNO specific branch
+- Updated templates to use LVM volume names instead of device names. Follow the convention ``/dev/vg01/postgres-data`` etc...
+
 ## 0.1
 - Updated helm templates to use storage classes for local storage
 - Hard codded storage class for postgres temporarily
