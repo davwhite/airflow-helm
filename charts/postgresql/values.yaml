@@ -30,6 +30,9 @@ global:
     servicePort:
     replicationPassword:
 
+  ## For local storage use this storage class
+  pvStorageClassName: "local-sc-a1"
+  
 ## @section Common parameters
 
 ## @param nameOverride String to partially override common.names.fullname template (will maintain the release name)
