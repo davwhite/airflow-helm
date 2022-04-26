@@ -1,0 +1,60 @@
+---
+apiVersion: "local.storage.openshift.io/v1"
+kind: "LocalVolume"
+metadata:
+  name: "local-disks-sda1"
+  namespace: "openshift-local-storage"
+spec:
+  nodeSelector:
+    nodeSelectorTerms:
+    - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ocpsno.davenet.local
+  storageClassDevices:
+    - storageClassName: "local-sc-a1"
+      volumeMode: Filesystem
+      fsType: xfs
+      devicePaths:
+        - /dev/sda1
+---
+apiVersion: "local.storage.openshift.io/v1"
+kind: "LocalVolume"
+metadata:
+  name: "local-disks-sda2"
+  namespace: "openshift-local-storage"
+spec:
+  nodeSelector:
+    nodeSelectorTerms:
+    - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ocpsno.davenet.local
+  storageClassDevices:
+    - storageClassName: "local-sc-a2"
+      volumeMode: Filesystem
+      fsType: xfs
+      devicePaths:
+        - /dev/sda2
+---
+apiVersion: "local.storage.openshift.io/v1"
+kind: "LocalVolume"
+metadata:
+  name: "local-disks-sda3"
+  namespace: "openshift-local-storage"
+spec:
+  nodeSelector:
+    nodeSelectorTerms:
+    - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ocpsno.davenet.local
+  storageClassDevices:
+    - storageClassName: "local-sc-a3"
+      volumeMode: Filesystem
+      fsType: xfs
+      devicePaths:
+        - /dev/sda3
